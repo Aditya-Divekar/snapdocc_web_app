@@ -1,0 +1,25 @@
+# Phase 1 (OCR core + evaluation). Later phases will add fastapi, twilio, openpyxl, etc.
+opencv-python-headless
+numpy
+pillow
+pytesseract
+easyocr      # pulls in PyTorch (large download, ~1-2 GB the first time)
+pytest
+
+# Phase 3 – file generators
+openpyxl
+python-docx
+reportlab
+
+# Phase 4 - WhatsApp webhook + sessions
+fastapi
+uvicorn[standard]
+python-multipart
+twilio
+requests
+python-dotenv
+sqlalchemy
+
+# Phase 4 polish - spelling correction for OCR text errors
+pyspellchecker
+httpx

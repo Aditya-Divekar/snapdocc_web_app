@@ -1,0 +1,13 @@
+venv/
+__pycache__/
+*.pyc
+.env
+*.db
+eval/results.csv
+data/samples/*
+!data/samples/.gitkeep
+data/uploads/
+data/output/
+data/downloads/
+ngrok.exe
+*.zip

@@ -1,0 +1,20 @@
+# Slim requirements for the deployed bot (Docker/Render).
+# Only Tesseract is used in production - EasyOCR + PyTorch are dev-only
+# (used by eval/evaluate.py to compare engines), and are deliberately left
+# out here since they'd add ~1GB+ and can blow past free-tier build limits.
+
+opencv-python-headless
+numpy
+pillow
+pytesseract
+fastapi
+uvicorn[standard]
+python-multipart
+twilio
+requests
+python-dotenv
+sqlalchemy
+openpyxl
+python-docx
+reportlab
+pyspellchecker
