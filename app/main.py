@@ -5,6 +5,7 @@ the web edit page (app/web.py), and the public /files folder for finished files.
 Run with:  uvicorn app.main:app --reload
 """
 
+import mimetypes
 import os
 
 from fastapi import BackgroundTasks, FastAPI, Form
@@ -16,6 +17,18 @@ from app.db.models import init_db
 from app.housekeeping import run_housekeeping
 from app.web import router as web_router
 from app.webhook import handle_message
+
+# The slim Docker image has no system MIME table, so .docx/.xlsx would be served as
+# "application/octet-stream" and WhatsApp rejects the file (Twilio error 63019).
+# Register the types ourselves so the right Content-Type is always sent.
+for _ext, _type in {
+    ".xlsx": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+    ".docx": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+    ".pdf": "application/pdf",
+    ".csv": "text/csv",
+    ".txt": "text/plain",
+}.items():
+    mimetypes.add_type(_type, _ext)
 
 app = FastAPI(title="SnapDocc")
 app.include_router(web_router)   # /edit/<token> pages
