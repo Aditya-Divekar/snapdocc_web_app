@@ -114,3 +114,9 @@ disk or an external database.
   entirely (not just misread them) - no amount of post-processing can recover text
   the engine never captured in the first place. A clearer, well-lit, straight-on
   photo is the single biggest accuracy lever you have.
+
+## Documentation
+- [Project documentation (PDF)](docs/SnapDocc_Documentation.pdf)
+- [Presentation (PPTX)](docs/SnapDocc_Presentation.pptx)
+
+![Architecture](docs/architecture.png)
